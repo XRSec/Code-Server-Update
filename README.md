@@ -45,7 +45,7 @@ docker run -it -d \
 	--name vscode \
 	-p 31004:22 \
 	-p 31005:5050 \
-	-p 31000-31003:31000:31003 \
+	-p 31000-31003:31000-31003 \
 	xrsec/vscode:latest
 
 # If you need auto start, please revamp
@@ -55,7 +55,7 @@ docker run -it -d \
 	--restart=always \
 	-p 31004:22 \
 	-p 31005:5050 \
-	-p 31000-31003:31000:31003 \
+	-p 31000-31003:31000-31003 \
 	xrsec/vscode:latest
 
 
@@ -73,3 +73,4 @@ docker run -it -d \
 - With the `code plug-in library`,  it is a sharp tool for `code audit`
 
 
+> XRSec has the right to modify and interpret this article. If you want to reprint or disseminate this article, you must ensure the integrity of this article, including all contents such as copyright notice. Without the permission of the author, the content of this article shall not be modified or increased or decreased arbitrarily, and it shall not be used for commercial purposes in any way
