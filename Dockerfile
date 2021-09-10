@@ -1,4 +1,6 @@
 FROM centos:latest
+LABEL maintainer="xrsec"
+LABEL mail="troy@zygd.site"
 
 # 初始化文件夹
 RUN mkdir /www /www/server /www/wwwroot /www/env /www/bak /www/server/php74 /www/server/php56 /www/wwwroot/myapp \
@@ -21,12 +23,12 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 
 
 # Download middleware https://github.com/cdr/code-server/
-RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases/download/v3.11.1/code-server-3.11.1-amd64.rpm \
-    && wget -O /www/bak/php74.tar.gz https://www.php.net/distributions/php-7.4.16.tar.gz \
-    && wget -O /www/bak/php56.tar.xz https://secure.php.net/get/php-5.6.40.tar.xz/from/this/mirror \
-    && wget -O /www/bak/oniguruma.tar.gz https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz \
-    && wget -O /www/bak/xdebug-2.5.5.tar http://pecl.php.net/get/xdebug-2.5.5.tar \
-    && wget -O /www/bak/xdebug-3.0.2.tar http://pecl.php.net/get/xdebug-3.0.2.tar
+RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases/download/v3.11.1/code-server-3.11.1-amd64.rpm --no-cookie --no-check-certificate \
+    && wget -O /www/bak/php74.tar.gz https://www.php.net/distributions/php-7.4.16.tar.gz --no-cookie --no-check-certificate \
+    && wget -O /www/bak/php56.tar.gz https://www.php.net/distributions/php-5.6.40.tar.gz --no-cookie --no-check-certificate \
+    && wget -O /www/bak/oniguruma.tar.gz https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz --no-cookie --no-check-certificate \
+    && wget -O /www/bak/xdebug-2.5.5.tar https://pecl.php.net/get/xdebug-2.5.5.tgz --no-cookie --no-check-certificate \
+    && wget -O /www/bak/xdebug-3.0.2.tar https://pecl.php.net/get/xdebug-3.0.2.tar --no-cookie --no-check-certificate
 
 
 # 复制文件
@@ -38,14 +40,14 @@ COPY ./favicon.ico /www/bak
 
 RUN chmod 777 /vscode.sh \
     # 解压文件
-    && tar xzvf /www/bak/php74.tar.gz -C /www/bak \
-    && tar xJvf /www/bak/php56.tar.xz -C /www/bak \
+    && tar -xzvf /www/bak/php74.tar.gz -C /www/bak \
+    && tar -xzvf /www/bak/php56.tar.gz -C /www/bak \
     && tar -zxvf /www/bak/oniguruma.tar.gz -C /www/bak \
     && rpm -ivh /www/bak/code-server.rpm
 
 
 # 编译安装oniguruma
-RUN cd /www/bak/onig-onig-6.9.7 \
+RUN cd /www/bak/onig-6.9.7 \
     && ./configure --prefix=/usr \
     && make && make install
 
@@ -135,7 +137,7 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && sed -i "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config \
     && echo "AllowUsers root" >> /etc/ssh/sshd_config \
     && mkdir -p /root/.config/code-server \
-    && echo "bind-addr: 0.0.0.0:31005" > /root/.config/code-server/config.yaml \
+    && echo "bind-addr: 0.0.0.0:8765" > /root/.config/code-server/config.yaml \
     && echo "auth: password" >> /root/.config/code-server/config.yaml \
     && echo "password: `openssl rand -base64 12`" >> /root/.config/code-server/config.yaml \
     && echo "cert: false" >> /root/.config/code-server/config.yaml \
@@ -165,9 +167,9 @@ RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
     && sed -i "s:openssl.cnf:\${0/openssl-gen.sh}openssl.cnf:g" /www/bak/ssl_cert/openssl-gen.sh \
     && sh /www/bak/ssl_cert/openssl-gen.sh \
     && sed -i "s/milkfr/vscode/g" /www/bak/ssl_cert/main.go \
-    && sed -i "s/vscode.github.io/127.0.0.1/g" /www/bak/ssl_cert/main.go \
+    && sed -i "s/vscode.github.io/localhost/g" /www/bak/ssl_cert/main.go \
     && cd /www/bak/ssl_cert \
-    && go run main.go 127.0.0.1 \
+    && go run main.go -hostname localhost \
     && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
     && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key \
     && sed -i "s/false/true/g" /root/.config/code-server/config.yaml \
@@ -189,7 +191,7 @@ RUN cp /www/bak/favicon.svg /usr/lib/code-server/src/browser/media/favicon-dark-
 
 ENTRYPOINT ["/vscode.sh"]
 
-EXPOSE 22 5050 31000 31001 31002 31003
+EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
 
 ENV TZ='Asia/Shanghai'
 ENV LANG 'zh_CN.UTF-8'
