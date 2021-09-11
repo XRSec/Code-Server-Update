@@ -18,7 +18,7 @@ See [requirements](https://github.com/cdr/code-server/blob/v3.11.1/docs/requirem
 
 ## Preview
 
-![](https://cdn.jsdelivr.net/gh/cdr/code-server@master/docs/assets/screenshot.svg)
+![screenshot.png](https://cdn.jsdelivr.net/gh/cdr/code-server@master/docs/assets/screenshot.png)
 
 ![image-20210414055205574](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025318419611.png?w=1280&fmt=jpg)
 
