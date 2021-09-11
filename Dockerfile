@@ -31,7 +31,7 @@ RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases
     && wget -O /www/bak/xdebug-3.0.2.tar https://pecl.php.net/get/xdebug-3.0.2.tar --no-cookie --no-check-certificate
 
 
-# 复制文件
+# copy file
 COPY ./Dockerfile /www/bak
 COPY ./vscode.sh /vscode.sh
 COPY ./favicon.png /www/bak
@@ -39,20 +39,20 @@ COPY ./favicon.svg /www/bak
 COPY ./favicon.ico /www/bak
 
 RUN chmod 777 /vscode.sh \
-    # 解压文件
+    # Unzip the files
     && tar -xzvf /www/bak/php74.tar.gz -C /www/bak \
     && tar -xzvf /www/bak/php56.tar.gz -C /www/bak \
     && tar -zxvf /www/bak/oniguruma.tar.gz -C /www/bak \
     && rpm -ivh /www/bak/code-server.rpm
 
 
-# 编译安装oniguruma
+# Compile and install Oniguruma
 RUN cd /www/bak/onig-6.9.7 \
     && ./configure --prefix=/usr \
     && make && make install
 
 
-# 编译安装php74
+# Compile and install PHP74
 RUN cd /www/bak/php-7.4.16 \
     && ./configure --prefix=/www/server/php74 --with-curl \
     --with-gettext --with-iconv-dir --with-kerberos --with-libdir=lib64 \
@@ -67,7 +67,7 @@ RUN cd /www/bak/php-7.4.16 \
     && /www/server/php74/bin/pecl install /www/bak/xdebug-3.0.2.tar
 
 
-# PHP74 配置文件
+# PHP74 configuration files
 RUN cp /www/bak/php-7.4.16/php.ini-development /www/server/php74/lib/php.ini \
     && echo "zend_extension=/www/server/php74/lib/php/extensions/no-debug-non-zts-20190902/xdebug.so" >> /www/server/php74/lib/php.ini \
     && echo "xdebug.mode = debug" >>/www/server/php74/lib/php.ini \
@@ -86,7 +86,7 @@ RUN cp /www/bak/php-7.4.16/php.ini-development /www/server/php74/lib/php.ini \
     && sed -i "s/user = nobody/user = nginx/g" /www/server/php74/etc/php-fpm.d/www.conf
 
 
-# 编译安装php56
+# Compile and install PHP56
 RUN cd /www/bak/php-5.6.40 \
     && ./configure --prefix=/www/server/php56 --with-curl \
     --with-gettext --with-iconv-dir --with-kerberos --with-libdir=lib64 \
@@ -100,7 +100,7 @@ RUN cd /www/bak/php-5.6.40 \
     && ln -s -f phar.phar /www/server/php56/bin/phar \
     && /www/server/php56/bin/pecl install /www/bak/xdebug-2.5.5.tar
 
-# PHP56 配置文件
+# PHP56 configuration files
 RUN cp /www/bak/php-5.6.40/php.ini-development /www/server/php56/lib/php.ini \
     && echo "zend_extension=/www/server/php56/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so" >> /www/server/php56/lib/php.ini \
     && echo "xdebug.remote_enable = on" >>/www/server/php56/lib/php.ini \
@@ -130,9 +130,11 @@ RUN echo 'H4sIAMACdWACA+0aaXPbuDWf9Suwjpts0iWpy7JHGo3HYzuxZ32N5e1sp+lwIBKUsAIBFg
     && sed -i "s/keepalive_timeout  65/keepalive_timeout  300/g" /etc/nginx/nginx.conf.default
 
 
-# 环境变量
+# PATH
 RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && echo "export PATH=\$PATH:\$vscode" >> /etc/profile \
+    && echo "export vscode=\"/www/env\"" >> /root/.zshrc \
+    && echo "export PATH=\$PATH:\$vscode" >> /root/.zshrc \
     && sed -i "s/#PubkeyAuthentication yes/PubkeyAuthentication yes/g" /etc/ssh/sshd_config \
     && sed -i "s/PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config \
     && echo "AllowUsers root" >> /etc/ssh/sshd_config \
@@ -147,7 +149,7 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && echo "source /etc/profile" >> /root/.bashrc
 
 
-# 证书模块 https://github.com/milkfr/certs
+# Certificate of the module https://github.com/milkfr/certs
 RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
     && sed -i "s/zhejiang/Sichuan/g" /www/bak/ssl_cert/openssl.cnf \
     && sed -i "s/hangzhou/ChengDu/g" /www/bak/ssl_cert/openssl.cnf \
@@ -178,7 +180,7 @@ RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
     && cp /www/bak/ssl_cert/vscode.key /root/.local/share/code-server/localhost.key
 
 
-# 配置code-server
+# configuration code-server
 RUN cp /www/bak/favicon.svg /usr/lib/code-server/src/browser/media/favicon-dark-support.svg \
     && cp /www/bak/favicon.ico /usr/lib/code-server/src/browser/media/favicon.ico \
     && cp /www/bak/favicon.svg /usr/lib/code-server/src/browser/media/favicon.svg \
