@@ -60,15 +60,26 @@ docker run -it -d \
 	-p 31000-31003:31000-31003 \
 	xrsec/vscode:latest
 
-
+# Docker
 # 5050-5051:5050 	: vscode live server
 # 8765:8765	:https web port
 # 31004：22	：ssh
 # 31000-31003	：liveserver & more
 # -v "/home/admin/Document/code:/www/wwwroot" ：Site path
-# $ docker cp vscode:/www/bak/ssl_cert/ca.pem .
+
+# SSL && PassWord
+# Password [$ docker logs vscode]
+# ca.pem [$ docker cp vscode:/www/bak/ssl_cert/ca.pem .] or vist https://localhost:8765/?folder=/www/bak/ssl_cert to download ca.pem
 # Exporting certificates first, then trusting, facilitates PWA technology implementation
+# Edit Password
+# vist https://localhost:8765/?folder=/root/.config/code-server/ & edit config.yaml then [$ docker restart vscode ]
+
+# PHP
+# $ pkill php && php56 && nginx
+# $ pkill php && php74 && nginx
 ```
+
+You can also take a [look at this article see](https://blog.zygd.site/Online%20Config%20VS%20Code.html)
 
 ## About
 
