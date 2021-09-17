@@ -5,8 +5,8 @@ LABEL mail="troy@zygd.site"
 # 初始化文件夹
 RUN mkdir /www /www/server /www/wwwroot /www/env /www/bak /www/server/php74 /www/server/php56 /www/wwwroot/myapp \
     && yum update -y \
-    && yum install -y nodejs zip unzip wget zsh vim make cmake gcc gcc-c++ libxml2 libxml2-devel git \
-    nodejs zip unzip sqlite-devel m4 autoconf nginx tree \
+    && yum install -y nodejs wget zsh vim make cmake gcc gcc-c++ libxml2 libxml2-devel git \
+    zip unzip sqlite-devel m4 autoconf nginx tree ncurses \
     krb5-devel openssl openssl-devel curl curl-devel libjpeg \
     libjpeg-devel libpng libpng-devel freetype freetype-devel \
     pcre pcre-devel libxslt libxslt-devel bzip2 bzip2-devel \
