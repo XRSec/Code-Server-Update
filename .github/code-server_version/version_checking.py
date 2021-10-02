@@ -7,7 +7,8 @@ code_server_version =  requests.get("https://api.github.com/repos/cdr/code-serve
 # else:
 #     print(open("code-server_version").read())
 
-for path,dir_list,file_list in os.getcwd():
+for path,dir_list,file_list in os.walk("./"):
     for file_name in file_list:
-        print(os.path.join(path, file_name) )
+        print(os.path.join(path, file_name))
+print(os.getcwd())
 # https://raw.githubusercontent.com/XRSec/Code-Server-Update/main/.github/code-server_version/code-server_version
