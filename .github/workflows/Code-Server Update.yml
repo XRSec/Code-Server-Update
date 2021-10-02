@@ -1,4 +1,4 @@
-name: 'Code-Server Update'
+name: Code-Server Update
 
  # 触发条件
 on:

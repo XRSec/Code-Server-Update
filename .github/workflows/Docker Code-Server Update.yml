@@ -1,4 +1,4 @@
-name: Code Server Update
+name: Docker Code Server Update
   
 on:
   push
