@@ -23,7 +23,7 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 
 
 # Download middleware https://github.com/cdr/code-server/
-RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases/download/v3.11.1/code-server-3.11.1-amd64.rpm --no-cookie --no-check-certificate \
+RUN wget -O /www/bak/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep \`dpkg --print-architecture\`` --no-cookie --no-check-certificate \
     && wget -O /www/bak/php74.tar.gz https://www.php.net/distributions/php-7.4.16.tar.gz --no-cookie --no-check-certificate \
     && wget -O /www/bak/php56.tar.gz https://www.php.net/distributions/php-5.6.40.tar.gz --no-cookie --no-check-certificate \
     && wget -O /www/bak/oniguruma.tar.gz https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz --no-cookie --no-check-certificate \
@@ -32,11 +32,8 @@ RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases
 
 
 # copy file
-COPY ./Dockerfile /www/bak
-COPY ./vscode.sh /vscode.sh
-COPY ./favicon.png /www/bak
-COPY ./favicon.svg /www/bak
-COPY ./favicon.ico /www/bak
+COPY . /www/bak
+COPY vscode.sh /vscode.sh
 
 RUN chmod 777 /vscode.sh \
     # Unzip the files
@@ -181,12 +178,12 @@ RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
 
 
 # configuration code-server
-RUN cp /www/bak/favicon.svg /usr/lib/code-server/src/browser/media/favicon-dark-support.svg \
-    && cp /www/bak/favicon.ico /usr/lib/code-server/src/browser/media/favicon.ico \
-    && cp /www/bak/favicon.svg /usr/lib/code-server/src/browser/media/favicon.svg \
-    && cp /www/bak/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon-192.png \
-    && cp /www/bak/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon-512.png \
-    && cp /www/bak/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon.png \
+RUN cp /www/bak/resources/favicon.svg /usr/lib/code-server/src/browser/media/favicon-dark-support.svg \
+    && cp /www/bak/resources/favicon.ico /usr/lib/code-server/src/browser/media/favicon.ico \
+    && cp /www/bak/resources/favicon.svg /usr/lib/code-server/src/browser/media/favicon.svg \
+    && cp /www/bak/resources/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon-192.png \
+    && cp /www/bak/resources/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon-512.png \
+    && cp /www/bak/resources/favicon.png /usr/lib/code-server/src/browser/media/pwa-icon.png \
     && sed -i "s/code-server/Visual Studio Code/g" /usr/lib/code-server/src/browser/media/manifest.json \
     && sed -i "s/Run editors on a remote server./Copyright (C) 2021 Microsoft. All rights reserved/g" /usr/lib/code-server/src/browser/media/manifest.json
 
