@@ -9,13 +9,13 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  curl-Code-Server:
+  Curl-Code-Server:
      runs-on: ubuntu-latest
      steps:
        - name: 'xecute command'
          env:
-           github-api: https://api.github.com/repos
-           github-user: code-server
-           github-repo: code-server
-         # 向站点发送 GET 请求
-         run: curl $github-api/$github-user/$github-repo/releases/latest
+           Github-Api: https://api.github.com/repos
+           Github-User: code-server
+           Github-Repo: code-server
+         run: curl $Github-Api
+        #  /$Github-User/$Github-Repo/releases/latest
