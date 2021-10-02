@@ -1,7 +1,11 @@
 name: Docker Code Server Update
   
 on:
-  push
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '0 0 * * *'
 
 jobs:
   push_to_registry:
