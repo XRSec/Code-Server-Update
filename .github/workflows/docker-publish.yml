@@ -36,5 +36,7 @@ jobs:
       #     tags: |
       #       xrsec/vscode:latest
       #     labels: ${{ steps.meta.outputs.labels }}
-      - name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "Hello ${{ github.event.commits[0].id }}"
