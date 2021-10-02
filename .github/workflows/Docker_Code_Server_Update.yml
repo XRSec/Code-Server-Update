@@ -20,8 +20,8 @@ jobs:
           pip install requests
       - name: version_checking
         run: |
-        python .github/code-server_version/version_checking.py
-        uname -p
+          python .github/code-server_version/version_checking.py
+          uname -p
       - uses: uraimo/run-on-arch-action@v2.0.5
         name: Run commands
         id: runcmd
