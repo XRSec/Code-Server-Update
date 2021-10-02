@@ -23,7 +23,7 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 
 
 # Download middleware https://github.com/cdr/code-server/
-RUN wget -O /www/bak/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep \`dpkg --print-architecture\`` --no-cookie --no-check-certificate \
+RUN wget -O /www/bak/code-server.rpm https://github.com/cdr/code-server/releases/download/v3.12.0/code-server-3.12.0-machine.rpm --no-cookie --no-check-certificate \
     && wget -O /www/bak/php74.tar.gz https://www.php.net/distributions/php-7.4.16.tar.gz --no-cookie --no-check-certificate \
     && wget -O /www/bak/php56.tar.gz https://www.php.net/distributions/php-5.6.40.tar.gz --no-cookie --no-check-certificate \
     && wget -O /www/bak/oniguruma.tar.gz https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz --no-cookie --no-check-certificate \
