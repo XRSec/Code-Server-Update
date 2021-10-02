@@ -28,12 +28,7 @@ jobs:
         with:
           arch: armv7
           distro: ubuntu18.04
-
-          # Not required, but speeds up builds by storing container images in
-          # a GitHub package registry.
-          githubToken: ${{ github.token }}
-
-          # Set an output parameter `uname` for use in subsequent steps
+          githubToken: ${{ secrets.TOKEN_GITHUB }}
           run: |
             uname -p
             echo ::set-output name=uname::$(uname -a)
