@@ -15,6 +15,6 @@ jobs:
        - name: 'xecute command'
          env:
            Github_Api: https://api.github.com/repos
-           Github_User: code-server
+           Github_User: cdr
            Github_Repo: code-server
-         run: echo $Github_Api/$Github_User/$Github_Repo/releases/latest
+         run: curl $Github_Api/$Github_User/$Github_Repo/releases/latest | grep "tag_name" | cut -d '"' -f 4
