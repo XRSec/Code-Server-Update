@@ -22,6 +22,21 @@ jobs:
         run: |
         python .github/code-server_version/version_checking.py
         uname -p
+      - uses: uraimo/run-on-arch-action@v2.0.5
+        name: Run commands
+        id: runcmd
+        with:
+          arch: armv7
+          distro: ubuntu18.04
+
+          # Not required, but speeds up builds by storing container images in
+          # a GitHub package registry.
+          githubToken: ${{ github.token }}
+
+          # Set an output parameter `uname` for use in subsequent steps
+          run: |
+            uname -p
+            echo ::set-output name=uname::$(uname -a)
       # # update version
       # - name: Update resources
       #   uses: test-room-7/action-update-file@v1
