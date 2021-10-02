@@ -14,8 +14,7 @@ jobs:
      steps:
        - name: 'xecute command'
          env:
-           Github-Api: https://api.github.com/repos
-           Github-User: code-server
-           Github-Repo: code-server
-         run: echo $Github-Api
-        #  /$Github-User/$Github-Repo/releases/latest
+           Github_Api: https://api.github.com/repos
+           Github_User: code-server
+           Github_Repo: code-server
+         run: echo $Github_Api/$Github_User/$Github_Repo/releases/latest
