@@ -14,8 +14,8 @@ jobs:
      steps:
        - name: 'xecute command'
          env:
-           Github-Api: https://api.github.com/repos
-           Github-User: code-server
-           Github-Repo: code-server
+           github-api: https://api.github.com/repos
+           github-user: code-server
+           github-repo: code-server
          # 向站点发送 GET 请求
-         run: curl $Github-Api/$Github-User/$Github-Repo/releases/latest
+         run: curl $github-api/$github-user/$github-repo/releases/latest
