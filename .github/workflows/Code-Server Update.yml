@@ -1,0 +1,22 @@
+name: 'Code-Server Update'
+
+ # 触发条件
+on:
+  push:
+  watch:
+    types: [started]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  curl-my-site:
+     runs-on: ubuntu-latest
+     steps:
+       - name: 'xecute command'
+         env:
+           Github-Api: "https://api.github.com/repos"
+           Github-User: "code-server"
+           Github-Repo: "code-server"
+         # 向站点发送 GET 请求
+         run: |                                   
+           curl $Github-Api/$Github-User/$Github-Repo/releases/latest
