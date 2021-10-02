@@ -20,6 +20,13 @@ jobs:
           pip install requests
       - name: version_checking
         run: python .github/code-server_version/version_checking.py
+
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+            file-path: .github/code-server_version/code-server_version
+            commit-msg: Update code-server version
+            github-token: ${{ secrets.TOKEN_GITHUB }}
       # - name: Log in to Docker Hub
       #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       #   with:
