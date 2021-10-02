@@ -17,5 +17,5 @@ jobs:
            Github-Api: https://api.github.com/repos
            Github-User: code-server
            Github-Repo: code-server
-         run: curl $Github-Api
+         run: echo $Github-Api
         #  /$Github-User/$Github-Repo/releases/latest
