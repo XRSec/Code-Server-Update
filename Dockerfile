@@ -1,6 +1,7 @@
 FROM centos:latest
 LABEL maintainer="xrsec"
 LABEL mail="troy@zygd.site"
+
 ARG TARGETPLATFORM
 
 # 初始化文件夹
