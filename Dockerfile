@@ -1,6 +1,7 @@
 FROM centos:latest
 LABEL maintainer="xrsec"
 LABEL mail="troy@zygd.site"
+ARG TARGETPLATFORM
 
 # 初始化文件夹
 RUN mkdir /www /www/server /www/wwwroot /www/env /www/bak /www/server/php74 /www/server/php56 /www/wwwroot/myapp \
@@ -34,6 +35,7 @@ RUN wget -O /www/bak/code-server.rpm `curl https://api.github.com/repos/cdr/code
 # copy file
 COPY . /www/bak
 COPY vscode.sh /vscode.sh
+COPY ${TARGETPLATFORM}/code-server.rpm /www/bak/
 
 RUN chmod 777 /vscode.sh \
     # Unzip the files
