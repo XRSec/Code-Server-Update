@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p linux/arm64 linux/amd64
           wget -O linux/amd64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep amd64.rpm` --no-cookie --no-check-certificate
-          wget -O linux/arm64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep amd64.rpm` --no-cookie --no-check-certificate
+          wget -O linux/arm64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep arm64.rpm` --no-cookie --no-check-certificate
           
       - 
         name: Docker Login
