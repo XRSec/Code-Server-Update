@@ -1,4 +1,4 @@
-name: Docker Oracle Java Build
+name: Docker Code Server Build
   
 on:
   push:
@@ -40,7 +40,6 @@ jobs:
         with:
           context: .
           platforms: linux/arm64,linux/amd64
-          file: Dockerfiles/Dockerfile.8
           push: true
           tags: |
             xrsec/vscode:latest
