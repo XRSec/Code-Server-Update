@@ -6,6 +6,8 @@ on:
       - main
   schedule:
     - cron:  '0 0 * * MON'
+  repository_dispatch:
+    types: [PhpUpdate, CodeUpdate]
 
 jobs:
   Build_For_Code_Server:
@@ -26,8 +28,7 @@ jobs:
         run: |
           mkdir -p linux/arm64 linux/amd64
           wget -O linux/amd64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep amd64.rpm` --no-cookie --no-check-certificate
-          wget -O linux/arm64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep arm64.rpm` --no-cookie --no-check-certificate
-          
+          wget -O linux/arm64/code-server.rpm `curl https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url"  | cut -d '"' -f 4 | grep arm64.rpm` --no-cookie --no-check-certificate 
       - 
         name: Docker Login
         uses: docker/login-action@v1.10.0
