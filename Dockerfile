@@ -6,7 +6,6 @@ ARG TARGETPLATFORM
 # INIT
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-
 # PATH
 RUN mkdir -p /root/.config/code-server \
     && echo "bind-addr: 0.0.0.0:8765" > /root/.config/code-server/config.yaml \
