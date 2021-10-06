@@ -44,5 +44,5 @@ jobs:
           push: true
           tags: |
             xrsec/vscode:latest
-          # cache-from: type=registry,ref=xrsec/vscode:cache
+          cache-from: type=registry,ref=xrsec/vscode:cache
           cache-to: type=registry,ref=rsec/vscode:cache,mode=max
