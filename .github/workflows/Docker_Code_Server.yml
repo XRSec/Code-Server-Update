@@ -44,5 +44,6 @@ jobs:
           push: true
           tags: |
             xrsec/vscode:init
+          file: Dockerfile.init
           # cache-from: type=registry,ref=xrsec/vscode:cache
           # cache-to: type=registry,ref=rsec/vscode:cache,mode=max
