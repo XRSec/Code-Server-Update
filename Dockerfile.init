@@ -8,7 +8,7 @@ RUN mkdir -p /www/wwwroot /www/env /www/wwwroot/myapp
 
 # Copy File
 COPY . /www/bak
-COPY vscode.sh /vscode.sh
+COPY code-server.sh /code-server.sh
 
 # Download the ZSH configuration
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
@@ -84,8 +84,9 @@ RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
     && cd /www/bak/ssl_cert \
     && go run main.go -hostname localhost \
     && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
-    && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key \
-ENTRYPOINT ["/vscode.sh"]
+    && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key
+    
+ENTRYPOINT ["/code-server.sh"]
 
 EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
 
@@ -94,4 +95,4 @@ ENV LANG 'zh_CN.UTF-8'
 
 STOPSIGNAL SIGQUIT
 
-CMD ["/vscode.sh"]
+CMD ["/code-server.sh"]
