@@ -3,6 +3,8 @@ name: Docker Code Server Build INIT
 on:
   repository_dispatch:
     types: [PhpUpdate, CodeUpdate]
+  watch:
+    types: started
 
 jobs:
   Build_For_Code_Server_Init:
