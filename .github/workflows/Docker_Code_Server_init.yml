@@ -34,7 +34,7 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: |
-            xrsec/vscode:init
+            xrsec/code-server:init
           file: .github/workflows/Dockerfile.init
-          cache-from: type=registry,ref=xrsec/vscode:cache
-          cache-to: type=registry,ref=xrsec/vscode:cache,mode=max
+          cache-from: type=registry,ref=xrsec/code-server:cache
+          cache-to: type=registry,ref=xrsec/code-server:cache,mode=max
