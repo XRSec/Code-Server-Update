@@ -21,17 +21,17 @@ RUN chmod 777 /vscode.sh \
     && rpm -ivh /www/bak/code-server.rpm
 
 # PHP74 configuration files
-RUN ln -sp /www/server/php74/bin/php /www/env/php74 \
-    && ln -sp /www/server/php74/sbin/php-fpm /www/env/php74-fpm \
-    && ln -sp /www/server/php74/bin/pecl /www/env/php74-pecl \
-    && ln -sp /www/server/php74/bin/pear /www/env/php74-pear \
+RUN ln -sf /www/server/php74/bin/php /www/env/php74 \
+    && ln -sf /www/server/php74/sbin/php-fpm /www/env/php74-fpm \
+    && ln -sf /www/server/php74/bin/pecl /www/env/php74-pecl \
+    && ln -sf /www/server/php74/bin/pear /www/env/php74-pear \
     rm -rf /usr/bin/php74*
 
 # PHP56 configuration files
-RUN ln -sp /www/server/php56/sbin/php-fpm /www/env/php56-fpm \
-    && ln -sp /www/server/php56/bin/php /www/env/php56 \
-    && ln -sp /www/server/php56/bin/pecl /www/env/php56-pecl \
-    && ln -sp /www/server/php56/bin/pear /www/env/php56-pear \
+RUN ln -sf /www/server/php56/sbin/php-fpm /www/env/php56-fpm \
+    && ln -sf /www/server/php56/bin/php /www/env/php56 \
+    && ln -sf /www/server/php56/bin/pecl /www/env/php56-pecl \
+    && ln -sf /www/server/php56/bin/pear /www/env/php56-pear \
     rm -rf /usr/bin/php74*
 
 # NGINX https://www.digitalocean.com/
@@ -57,8 +57,8 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && echo "auth: password" >> /root/.config/code-server/config.yaml \
     && echo "password: `openssl rand -base64 12`" >> /root/.config/code-server/config.yaml \
     && echo "cert: false" >> /root/.config/code-server/config.yaml \
-    && ln -sp /etc/nginx/sites-available/localhost.conf /www/server/localhost.conf \
-    && ln -sp /etc/profile /www/server/profile \
+    && ln -sf /etc/nginx/sites-available/localhost.conf /www/server/localhost.conf \
+    && ln -sf /etc/profile /www/server/profile \
     && echo -e '<?php phpinfo(); ?>' > /www/wwwroot/myapp/index.php \
     && echo "source /etc/profile" >> /root/.bashrc
 
