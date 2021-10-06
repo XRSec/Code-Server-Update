@@ -6,8 +6,6 @@ on:
       - main
   schedule:
     - cron:  '0 0 * * MON'
-  # repository_dispatch:
-  #   types: [PhpUpdate, CodeUpdate]
 
 jobs:
   Build_For_Code_Server:
@@ -44,5 +42,3 @@ jobs:
           push: true
           tags: |
             xrsec/vscode:latest
-          # cache-from: type=registry,ref=xrsec/vscode:cache
-          # cache-to: type=registry,ref=rsec/vscode:cache,mode=max

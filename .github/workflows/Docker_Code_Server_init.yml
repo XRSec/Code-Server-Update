@@ -1,11 +1,11 @@
-name: Docker Code Server Build
+name: Docker Code Server Build INIT
   
 on:
   repository_dispatch:
     types: [PhpUpdate, CodeUpdate]
 
 jobs:
-  Build_For_Code_Server:
+  Build_For_Code_Server_Init:
     name: Docker Code Server Build
     runs-on: ubuntu-latest
     steps:
