@@ -41,4 +41,4 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: |
-            xrsec/vscode:latest
+            xrsec/code-server:latest
