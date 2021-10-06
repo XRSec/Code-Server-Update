@@ -4,7 +4,7 @@ LABEL mail="troy@zygd.site"
 ARG TARGETPLATFORM
 
 # INIT
-RUN mkdir /www/wwwroot /www/env /www/wwwroot/myapp
+RUN mkdir -p /www/wwwroot /www/env /www/wwwroot/myapp
 # Copy File
 COPY . /www/bak
 COPY vscode.sh /vscode.sh
@@ -21,17 +21,17 @@ RUN chmod 777 /vscode.sh \
     && rpm -ivh /www/bak/code-server.rpm
 
 # PHP74 configuration files
-RUN ln -s /www/server/php74/bin/php /www/env/php74 \
-    && ln -s /www/server/php74/sbin/php-fpm /www/env/php74-fpm \
-    && ln -s /www/server/php74/bin/pecl /www/env/php74-pecl \
-    && ln -s /www/server/php74/bin/pear /www/env/php74-pear \
+RUN ln -sp /www/server/php74/bin/php /www/env/php74 \
+    && ln -sp /www/server/php74/sbin/php-fpm /www/env/php74-fpm \
+    && ln -sp /www/server/php74/bin/pecl /www/env/php74-pecl \
+    && ln -sp /www/server/php74/bin/pear /www/env/php74-pear \
     rm -rf /usr/bin/php74*
 
 # PHP56 configuration files
-RUN ln -s /www/server/php56/sbin/php-fpm /www/env/php56-fpm \
-    && ln -s /www/server/php56/bin/php /www/env/php56 \
-    && ln -s /www/server/php56/bin/pecl /www/env/php56-pecl \
-    && ln -s /www/server/php56/bin/pear /www/env/php56-pear \
+RUN ln -sp /www/server/php56/sbin/php-fpm /www/env/php56-fpm \
+    && ln -sp /www/server/php56/bin/php /www/env/php56 \
+    && ln -sp /www/server/php56/bin/pecl /www/env/php56-pecl \
+    && ln -sp /www/server/php56/bin/pear /www/env/php56-pear \
     rm -rf /usr/bin/php74*
 
 # NGINX https://www.digitalocean.com/
@@ -57,8 +57,8 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && echo "auth: password" >> /root/.config/code-server/config.yaml \
     && echo "password: `openssl rand -base64 12`" >> /root/.config/code-server/config.yaml \
     && echo "cert: false" >> /root/.config/code-server/config.yaml \
-    && ln -s /etc/nginx/sites-available/localhost.conf /www/server/localhost.conf \
-    && ln -s /etc/profile /www/server/profile \
+    && ln -sp /etc/nginx/sites-available/localhost.conf /www/server/localhost.conf \
+    && ln -sp /etc/profile /www/server/profile \
     && echo -e '<?php phpinfo(); ?>' > /www/wwwroot/myapp/index.php \
     && echo "source /etc/profile" >> /root/.bashrc
 
