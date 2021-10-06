@@ -44,5 +44,5 @@ jobs:
           push: true
           tags: |
             xrsec/vscode:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=registry,ref=xrsec/vscode:latest
+          cache-to: type=inline
