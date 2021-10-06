@@ -45,4 +45,4 @@ jobs:
           tags: |
             xrsec/vscode:latest
           cache-from: type=registry,ref=xrsec/vscode:latest
-          cache-to: type=inline
+          cache-to: type=registry,ref=rsec/vscode:latest,mode=max
