@@ -36,5 +36,5 @@ jobs:
           tags: |
             xrsec/vscode:init
           file: .github/workflows/Dockerfile.init
-#           cache-from: type=registry,ref=xrsec/vscode:cache
-          cache-to: type=registry,ref=rsec/vscode:cache,mode=max
+          cache-from: type=registry,ref=xrsec/vscode:cache
+          cache-to: type=registry,ref=xrsec/vscode:cache,mode=max
