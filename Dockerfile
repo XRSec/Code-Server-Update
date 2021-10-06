@@ -17,7 +17,7 @@ RUN mkdir -p /root/.config/code-server \
     && cp /www/bak/ssl_cert/vscode.crt /root/.local/share/code-server/localhost.crt \
     && cp /www/bak/ssl_cert/vscode.key /root/.local/share/code-server/localhost.key
 
-ENTRYPOINT ["/vscode.sh"]
+ENTRYPOINT ["/code-server.sh"]
 
 EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
 
@@ -26,4 +26,4 @@ ENV LANG 'zh_CN.UTF-8'
 
 STOPSIGNAL SIGQUIT
 
-CMD ["/vscode.sh"]
+CMD ["/code-server.sh"]
