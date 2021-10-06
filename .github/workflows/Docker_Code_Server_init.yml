@@ -8,7 +8,7 @@ on:
 
 jobs:
   Build_For_Code_Server_Init:
-    name: Docker Code Server Build
+    name: Docker Code Server Build INIT
     runs-on: ubuntu-latest
     steps:
       - 
