@@ -1,6 +1,6 @@
 # [Code Server Update](https://blog.zygd.site/Code%20Server%20Update.html)
 
-[!["GitHub Discussions"](https://img.shields.io/badge/%20GitHub-%20Discussions-gray.svg?longCache=true&logo=github&colorB=purple)](https://github.com/cdr/code-server/discussions) [!["Join us on Slack"](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen)](https://cdr.co/join-community) [![Twitter Follow](https://img.shields.io/twitter/follow/CoderHQ?label=%40CoderHQ&style=social)](https://twitter.com/coderhq) [![codecov](https://codecov.io/gh/cdr/code-server/branch/main/graph/badge.svg?token=5iM9farjnC)](https://codecov.io/gh/cdr/code-server) [![See docs](https://img.shields.io/github/v/release/cdr/code-server?label=Docs&color=blue)](https://github.com/cdr/code-server/tree/main/docs) [![Docker Automated Build](https://img.shields.io/docker/automated/xrsec/vscode?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/xrsec/vscode) [![Docker Code Server Build](https://github.com/XRSec/Code-Server-Update/actions/workflows/Docker_Code_Server.yml/badge.svg)](https://github.com/XRSec/Code-Server-Update/actions/workflows/Docker_Code_Server.yml)
+[!["GitHub Discussions"](https://img.shields.io/badge/%20GitHub-%20Discussions-gray.svg?longCache=true&logo=github&colorB=purple)](https://github.com/cdr/code-server/discussions) [!["Join us on Slack"](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen)](https://cdr.co/join-community) [![Twitter Follow](https://img.shields.io/twitter/follow/CoderHQ?label=%40CoderHQ&style=social)](https://twitter.com/coderhq) [![codecov](https://codecov.io/gh/cdr/code-server/branch/main/graph/badge.svg?token=5iM9farjnC)](https://codecov.io/gh/cdr/code-server) [![See v3.11.1 docs](https://img.shields.io/static/v1?label=Docs&message=see%20v3.11.1%20&color=blue)](https://github.com/cdr/code-server/tree/v3.11.1/docs) [![Docker Automated Build](https://img.shields.io/docker/automated/xrsec/code-server?label=Build&logo=docker&style=flat-square)](https://hub.docker.com/r/xrsec/code-server) [![Docker Code Server Build](https://github.com/XRSec/Code-Server-Update/actions/workflows/Docker_Code_Server.yml/badge.svg)](https://github.com/XRSec/Code-Server-Update/actions/workflows/Docker_Code_Server.yml)
 
 Run [VS Code](https://github.com/Microsoft/vscode) on any machine anywhere and access it in the browser.
 
@@ -21,59 +21,59 @@ See [requirements](https://github.com/cdr/code-server/blob/v3.11.1/docs/requirem
 
 ![screenshot.png](https://cdn.jsdelivr.net/gh/cdr/code-server@master/docs/assets/screenshot.png)
 
-![image-20210414055205574](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025318419611.png?w=1280&fmt=jpg)
+![image-20210414055205574](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025318419611.png)
 
-![image-20210414055235174](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025328484604.png?w=1280&fmt=jpg)
+![image-20210414055235174](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025328484604.png)
 
-![image-20210414055414719](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025337591529.png?w=1280&fmt=jpg)
+![image-20210414055414719](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025337591529.png)
 
 Open the folder where you want XDebug
 
-![image-20210414055539161](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025400286705.png?w=1280&fmt=jpg)
+![image-20210414055539161](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025400286705.png)
 
-![image-20210414055812313](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025411261774.png?w=1280&fmt=jpg)
+![image-20210414055812313](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025411261774.png)
 
-![image-20210414061136419](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025430379273.png?w=1280&fmt=jpg)
+![image-20210414061136419](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025430379273.png)
 
-![image-20210414061302145](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025437679754.png?w=1280&fmt=jpg)
+![image-20210414061302145](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025437679754.png)
 
-![image-20210414061343415](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025447226680.png?w=1280&fmt=jpg)
+![image-20210414061343415](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025447226680.png)
 
 ## Getting started
 
 ```bash
 docker run -it -d \
-	--name vscode \
+	--name code-server \
 	-p 31004:22 \
 	-p 5050-5051:5050-5051 \
 	-p 8765:8765 \
 	-p 31000-31003:31000-31003 \
-	xrsec/vscode:latest
+	xrsec/code-server:latest
 
 # If you need auto start, please revamp
 
 docker run -it -d \
-	--name vscode \
+	--name code-server \
 	--restart=always \
 	-p 31004:22 \
 	-p 5050-5051:5050-5051 \
 	-p 8765:8765 \
 	-p 31000-31003:31000-31003 \
-	xrsec/vscode:latest
+	xrsec/code-server:latest
 
 # Docker
-# 5050-5051:5050 	: vscode live server
+# 5050-5051:5050 	: code-server live server
 # 8765:8765	:https web port
 # 31004：22	：ssh
 # 31000-31003	：liveserver & more
 # -v "/home/admin/Document/code:/www/wwwroot" ：Site path
 
 # SSL && PassWord
-# Password [$ docker logs vscode]
-# ca.pem [$ docker cp vscode:/www/bak/ssl_cert/ca.pem .] or vist https://localhost:8765/?folder=/www/bak/ssl_cert to download ca.pem
+# Password [$ docker logs code-server]
+# ca.pem [$ docker cp code-server:/www/bak/ssl_cert/ca.pem .] or vist https://localhost:8765/?folder=/www/bak/ssl_cert to download ca.pem
 # Exporting certificates first, then trusting, facilitates PWA technology implementation
 # Edit Password
-# vist https://localhost:8765/?folder=/root/.config/code-server/ & edit config.yaml then [$ docker restart vscode ]
+# vist https://localhost:8765/?folder=/root/.config/code-server/ & edit config.yaml then [$ docker restart code-server ]
 
 # PHP
 # $ pkill php && php56 && nginx
