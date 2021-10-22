@@ -40,5 +40,4 @@ jobs:
           context: .
           platforms: linux/arm64,linux/amd64
           push: true
-          tags: |
-            xrsec/code-server:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/code-server:latest
