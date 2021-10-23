@@ -34,10 +34,10 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: |
-            xrsec/code-server:init
+            ${{ secrets.DOCKERHUB_USERNAME }}/code-server:init
           file: .github/workflows/Dockerfile.init
-          cache-from: type=registry,ref=xrsec/code-server:cache
-          cache-to: type=registry,ref=xrsec/code-server:cache,mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:cache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:cache,mode=max
 
   Repository_Dispatch:
     needs: Build_For_Code_Server_Init
@@ -48,6 +48,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
-          repository: XRSec/Code-Server-Update
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/Code-Server-Update
           event-type: Code_Update_Action
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
