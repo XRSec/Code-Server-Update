@@ -36,8 +36,8 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/code-server:init
           file: .github/workflows/Dockerfile.init
-          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:init
-          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:init,mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:init.cache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:init.cache,mode=max
 
   Repository_Dispatch:
     needs: Build_For_Code_Server_Init
