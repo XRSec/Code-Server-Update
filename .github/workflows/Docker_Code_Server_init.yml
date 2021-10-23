@@ -38,6 +38,7 @@ jobs:
           file: .github/workflows/Dockerfile.init
           cache-from: type=registry,ref=xrsec/code-server:cache
           cache-to: type=registry,ref=xrsec/code-server:cache,mode=max
+
   Repository_Dispatch:
     needs: Build_For_Code_Server_Init
     runs-on: ubuntu-latest
