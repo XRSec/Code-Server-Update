@@ -40,3 +40,5 @@ jobs:
           platforms: linux/arm64,linux/amd64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/code-server:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:cache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/code-server:cache,mode=max
