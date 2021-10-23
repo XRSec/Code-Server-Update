@@ -2,7 +2,7 @@ name: Docker Code Server Build INIT
   
 on:
   repository_dispatch:
-    types: [PhpUpdate, CodeUpdate]
+    types: [PhpUpdate]
   watch:
     types: started
 
@@ -38,3 +38,15 @@ jobs:
           file: .github/workflows/Dockerfile.init
           cache-from: type=registry,ref=xrsec/code-server:cache
           cache-to: type=registry,ref=xrsec/code-server:cache,mode=max
+  Repository_Dispatch:
+    needs: Build_For_Code_Server_Init
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.TOKEN_GITHUB }}
+          repository: XRSec/Code-Server-Update
+          event-type: Code_Update_Action
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
