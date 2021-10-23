@@ -2,7 +2,7 @@ name: Docker Code Server Build
   
 on:
   repository_dispatch:
-    types: [CodeUpdate]
+    types: [Code_Update_Action]
   schedule:
     - cron:  '0 0 * * MON'
 
