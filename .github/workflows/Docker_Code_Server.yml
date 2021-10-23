@@ -1,9 +1,8 @@
 name: Docker Code Server Build
   
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [CodeUpdate]
   schedule:
     - cron:  '0 0 * * MON'
 
