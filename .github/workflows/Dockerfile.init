@@ -9,7 +9,7 @@ COPY --chmod=777 code-server.sh /code-server.sh
 
 # Download the ZSH configuration
 RUN yum install util-linux \
-    && curl -s https://gist.githubusercontent.com/XRSec/0e47c9b793887d201bab9de2a07a740c/raw/453bf6f3be8c51e69094c4f214adee41815d0ab3/zsh_init.sh | zsh
+    && curl -s https://gist.githubusercontent.com/XRSec/0e47c9b793887d201bab9de2a07a740c/raw/453bf6f3be8c51e69094c4f214adee41815d0ab3/shell_zsh_init.sh | zsh
 
 # PHP74 configuration files
 RUN ln -sf /www/server/php74/bin/php /www/env/php74 \
