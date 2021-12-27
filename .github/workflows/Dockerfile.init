@@ -8,10 +8,7 @@ RUN mkdir -p /www/wwwroot /www/env /www/wwwroot/myapp
 COPY --chmod=777 code-server.sh /code-server.sh
 
 # Download the ZSH configuration
-RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-    && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
-    && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
-    && sed -i "s/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/g" /root/.zshrc
+RUN curl -s https://gist.githubusercontent.com/XRSec/0e47c9b793887d201bab9de2a07a740c/raw/4f93984560d5ec3b2f700e5fad82441045484003/zsh_init.sh | bash -
 
 # PHP74 configuration files
 RUN ln -sf /www/server/php74/bin/php /www/env/php74 \
