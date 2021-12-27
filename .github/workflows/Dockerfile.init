@@ -8,7 +8,7 @@ RUN mkdir -p /www/wwwroot /www/env /www/wwwroot/myapp
 COPY --chmod=777 code-server.sh /code-server.sh
 
 # Download the ZSH configuration
-RUN yum install util-linux \
+RUN yum install util-linux -y \
     && curl -s https://gist.githubusercontent.com/XRSec/0e47c9b793887d201bab9de2a07a740c/raw/453bf6f3be8c51e69094c4f214adee41815d0ab3/shell_zsh_init.sh | zsh
 
 # PHP74 configuration files
