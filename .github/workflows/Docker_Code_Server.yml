@@ -1,6 +1,7 @@
 name: Docker Code Server Build
   
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [Code_Update_Action]
   schedule:

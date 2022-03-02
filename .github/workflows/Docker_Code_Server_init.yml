@@ -1,6 +1,7 @@
 name: Docker Code Server Build INIT
   
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [Php_Update_Action]
   watch:
