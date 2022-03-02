@@ -4,6 +4,7 @@ LABEL mail="troy@zygd.site"
 LABEL Github="https://github.com/XRSec/Code-Server-Update"
 LABEL org.opencontainers.image.source="https://github.com/XRSec/Code-Server-Update"
 LABEL org.opencontainers.image.title="Code-Server-Update"
+
 ARG TARGETPLATFORM
 
 # INIT
