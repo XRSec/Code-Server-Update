@@ -61,35 +61,37 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
     && ln -sf /etc/nginx/sites-available/localhost.conf /www/server/localhost.conf \
     && ln -sf /etc/profile /www/server/profile \
     && echo -e '<?php phpinfo(); ?>' > /www/wwwroot/myapp/index.php \
-    && echo "source /etc/profile" >> /root/.bashrc
+    && echo "source /etc/profile" >> /root/.bashrc \
+    && mkdir -p /www/bak/ssl_cert/ \
+    && echo 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZiVENDQTFXZ0F3SUJBZ0lDQitNd0RRWUpLb1pJaHZjTkFRRUxCUUF3T0RFTE1Ba0dBMVVFQmhNQ1ZWTXgKRGpBTUJnTlZCQW9UQlVOdlpHVnlNUmt3RndZRFZRUURFeEJEYjJSbElGTmxjblpsY2lCU2IyOTBNQjRYRFRJeQpNRE13TXpFMU1qazFPRm9YRFRJME1ETXdNekUxTWprMU9Gb3dNekVMTUFrR0ExVUVCaE1DVlZNeERqQU1CZ05WCkJBb1RCVmhTVTJWak1SUXdFZ1lEVlFRREV3dERiMlJsSUZObGNuWmxjakNDQWlJd0RRWUpLb1pJaHZjTkFRRUIKQlFBRGdnSVBBRENDQWdvQ2dnSUJBTG5MaHpUV0c4WHZSYmdnVldGc1IvVFFvTG9GVXdINk5kS3g5OWdGSjdyUQpMczk5WTlkczhJa01GRVBPb0hnRkFsU1lxK3U0QTNnS1JqTUZKaTB5UE5BQ1FXMHM5cDZCcUk5MThNRHVRR2VTCkpyZFVjQ20yU3AyZmllZHM1R29SYndjUXF6VWx6ZlYydDdPdEVJLzhRTS92UnZ2d3NiZEZ6UFowSUJ2aGJVS28KZG0zenFvWFRrNXIrNlpJVTFOQVlVUWgrNjBsMndKU0JDMDN1WlR6UC96c0dEckMvRit6SDVwWlpsMVltY29sWApYQnBvSmd4TERkY2x0dmc3NHdxWWN2RnE3YUQwbTlkanFLSnc1N2QyaGg1UHh4bGhEL0FqNmdOanBzU09xUEhUClJjTzdDQ2xINnpmTk9JbUoyOWFrOTk2YXhNYjJlRCtiZDRaQ2h0eGphTDZEcUhmTzdBdFpsWE1wUjRpbFZhYy8KV0VHS1ZtN01hQXJObysxYkVNM2JycE9XZ0tTcWs3YUY2cklCWFo1Umg2a3hxcDZPWEZOQUp5NEZ3N0ZhTVQ3VAplOWJqY0xaZHNzNXVQelo3T0thZEJJdWdHekpabXZQTnpqVlMxZ1BrRWN2TXBic0syZWcxMGxvRzV2NkYwc3owCnU3TVNVTGNBVjdvS2Y0WnVHcmdKa1lNZUVHTmFzQjQrNjR1SlY4YmtWeDZ2UWNIMWt1UVlDeHZyVFBnQW1EUUEKeWQ3YXMyVVZ0UmhLa05TRXdUZDFvMnFNZXNsTjZzOWVmdzFucndlcVVHbXVidDNsdG1jYTFKZUczbDNSZWNSYQpmcjkreWZRUTQ4NTd0WU9PakU4YUZCN0ZaKzAyNVZTQTlyREdqdXdPZnhsMVNKdFVUVWNBRVJqME9iNnJaZTFWCkFnTUJBQUdqZ1lVd2dZSXdEZ1lEVlIwUEFRSC9CQVFEQWdlQU1CMEdBMVVkSlFRV01CUUdDQ3NHQVFVRkJ3TUMKQmdnckJnRUZCUWNEQVRBZkJnTlZIU01FR0RBV2dCVEFMOVNiN29PSU1jU1VkT29NUFdzUUsxQit1ekF3QmdOVgpIUkVFS1RBbmdnbHNiMk5oYkdodmMzU0NDbU52WkdVdWJHOWpZV3lDQ0dOdlpHVXViR0Z1aHdSL0FBQUJNQTBHCkNTcUdTSWIzRFFFQkN3VUFBNElDQVFBT1hKcFM0aHZCdHlrdnRCS0c1eFk0a08rVkFNbzdsMGZMeTBET1RDUDIKTjhXU285RjRhSGI2NnVJWnpWQWQ3QXh3dldZeUpYK21NZnJoT1VHWjFVV3JFUWcvaTYvMVhkeURyVklwNzhIMgpmdW8vemh4S3pUTGF5NWdYTW9leGJyRERjR3hDQlBsZGxLekpuWGNwbWZFNG9wWU0rQ0NNNmdCNElWaWNvL296Cmd6QU8zeGlQOTViTE5ZUmgzVExxNW1BeEJsVUJWbSszU0RrRVlySXgrWVBMd01zV0pCMkt4VWVVMlNLcittNU8KdjMyaEtyeGlXQlAvY3lKQnpxbGJZL1MwNUpGdm5ZQzZGc2czamtXR2pUREF6c1pUVVVWV1U4QzcrU3drUW5iMQphZnBVQmZOSFZkR1V4aENGL1hCQ1ZSN2Z1d0gwWDJnTWgxQkhGVng0cmY1c3VZdzB0eFlTaHVoSDJhR2ZhVFRtCkZsV0grVGJqMG55UUJhN2lsWU1zOHJSTzU3QlBTd0hBZjVZMnIzVzg4UE0xaWVqY2orVHh1TGhKQ0tTbjVyWFYKRGNWdFVZTm94RUN5ZmJFWDBLUzZhNGpJdUFLWUNxeUlJVjZLYlBna3pmWlVwLzNtS2FLK1RXZnZzazJwNjNhRAp4cmF4NVJDV05EdE0vTFNQQmkzNllpMjZ5OTM5dmFocjN6dkhqUGtYKy9RR2NnMkZFcjlrTnRHK254d04rK3B5CkpCeU9vNS80eXNTOVNjeXNvMmNuRmp1Ky9vcFZ5d1JvZGdDQjZsU1FiSkN3aVBBNm85NUkzSGhXR2ZOSzB5cXMKOGp3YkpMS0VmYWx5aFFOM2JacVF2Z3gxQyt6aFRaOFU0clJ6QkY5VGQ4cXJQeEh1V0RNdkNCOXp0VHo3bSsrMwpOZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K' | base64 -d > /www/bak/ssl_cert/vscode.crt \
+    && echo 'LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS0FJQkFBS0NBZ0VBdWN1SE5OWWJ4ZTlGdUNCVllXeEg5TkNndWdWVEFmbzEwckgzMkFVbnV0QXV6MzFqCjEyendpUXdVUTg2Z2VBVUNWSmlyNjdnRGVBcEdNd1VtTFRJODBBSkJiU3oybm9Hb2ozWHd3TzVBWjVJbXQxUncKS2JaS25aK0o1MnprYWhGdkJ4Q3JOU1hOOVhhM3M2MFFqL3hBeis5RysvQ3h0MFhNOW5RZ0crRnRRcWgyYmZPcQpoZE9UbXY3cGtoVFUwQmhSQ0g3clNYYkFsSUVMVGU1bFBNLy9Pd1lPc0w4WDdNZm1sbG1YVmlaeWlWZGNHbWdtCkRFc04xeVcyK0R2akNwaHk4V3J0b1BTYjEyT29vbkRudDNhR0hrL0hHV0VQOENQcUEyT214STZvOGRORnc3c0kKS1Vmck44MDRpWW5iMXFUMzNwckV4dlo0UDV0M2hrS0czR05vdm9Pb2Q4N3NDMW1WY3lsSGlLVlZwejlZUVlwVwpic3hvQ3MyajdWc1F6ZHV1azVhQXBLcVR0b1hxc2dGZG5sR0hxVEdxbm81Y1UwQW5MZ1hEc1ZveFB0TjcxdU53CnRsMnl6bTQvTm5zNHBwMEVpNkFiTWxtYTg4M09OVkxXQStRUnk4eWx1d3JaNkRYU1dnYm0vb1hTelBTN3N4SlEKdHdCWHVncC9obTRhdUFtUmd4NFFZMXF3SGo3cmk0bFh4dVJYSHE5QndmV1M1QmdMRyt0TStBQ1lOQURKM3RxegpaUlcxR0VxUTFJVEJOM1dqYW94NnlVM3F6MTUvRFdldkI2cFFhYTV1M2VXMlp4clVsNGJlWGRGNXhGcCt2MzdKCjlCRGp6bnUxZzQ2TVR4b1VIc1ZuN1RibFZJRDJzTWFPN0E1L0dYVkltMVJOUndBUkdQUTV2cXRsN1ZVQ0F3RUEKQVFLQ0FnQmU5Yjl0S2VHWUVPczVhSTA2OWZUeEU1Q1NneFloOUpoOXo2ZzFLSzFkdGZtMjR3ZWNtM2wxRWs5cApPTHFiblRQTHVSeGxwZTlmOHlCZUEwdTMzZTFuQTBBZFpOWEh2YzFCUmE1L2JVWk5xVTFRZGorOWtnWWcrZUdwCi91WGZzSGxteXdZMmE5UVFtVlRhNktHR2RnOUtONm00S3hVcDd1c0xLOThkWU9KUEozc2dSMkhvZEhNRXpUVGsKRFBHWVNsVmdXajQzbGhKbjFHektzQVhlUnhEVVFneFFHZHRJa2dNdzVTbU1ScXBUdCtyRE5HZjk4SDVxY0VSTQpLNCtuWXJPYzRHSUQyZ0dzM0tyY0c0alRKQ2o0WlI0RndxNDZ0cUJzaXdvNWZCQ3RTS1pubTdoWUlRSC95MHdTClAvdTBnU3lQQWR1Qk5ZZlFPczJrT1d4a1NBcklOTmp2dVRFeStQN2NnU1Y2Q0t2NHZFN0krNmtSY3BDd3M0dVcKdGZ0czF0YTBzTko3UFhxWWxtUHprcWlCL0ZYQ21HWU4zOFQ2UUtFaWlFTktSYWV1bkJ4N2g2ZkRVNmdKRkhTUAoyTFRrbnpNeUN1NkRYTXZ2SVorTVgvejFCRy9BTkhyVTRidFF6MnR1R1d6SmRNdTQxWG9vaVhDZVArTyt0YVZnCnlGeWtkMkJ6azJralRwZjFxMkNYRUlLVHBsRE1zKzVBdGt6UFNBY2MzYXlxZ0ZEQ1ArK2xQb09vTWhzWTdZTVIKRW1GM25adUh3WGpXbjRjeDRCUUVwajNBQUh0QjdqYWNJN2FCQUw2REFzcUROUy9jYzIyeS92MnBudlcvL1MrZwpxTFFkazVKeW5VYWdlc0k4bm1aWkRuKzlNU3BhTjl1bGZ2UXNGdVZOU0sxUTVoemlBUUtDQVFFQXhnZW5BVkhyCnRvQ1pIdVFHa09UalQ2aXlGUWxQUDdhUFJBdjUvV0V2bHBZRlprNGxmR3ovUTVEMmFnZm92bGhmY0xJR3JmMGQKdlJIdVdhUWJka1grSlJLeHVBUExTOXdTUzh4Q1BnQ3ByQUMzNGdGVFFPUmE5TzlHWGFzZGlIT1dXN1Q2S1FHeApvOXRqQm9kTXFWSEx2TERuaHZiUEhzdGpsNDBmd0tBVkV1ejRBNkRXWnJIc3N0djM5NGE4OVZvSk1XUVhBZk5OCmtUSnN6STJ2LzU3Ni92dUtBM25TS0V2RXZ2blNPLzBuUDNOQzB4azhDcmJXM0FKTmh0TllvZ0dzWnQyTnA0b0gKOHkxTEtITkkwZldlL09OK2UvVkRRVHU3UTN5Qm11L3NobUg2cFhHaDRoMDl0M29Ud1JLRU5zeVZmblBsVGhvQQpvYTNEVWs5ejFDWTQ1UUtDQVFFQThDNy9Bb3NzVm5UOFI2TXhnbU5zL2FFMmVudU5SV0xFc1E3cVBtMGl2eHVHClBsUEp0bFNHbFRsUURid2xxL0x6RWF4TlBUbG9kaGhYd0dDK1BJOHpzTFhoZEVmM1JabWVRMXg3Y2JRQThnNUYKMk9CNDl2ZnRiTGlzajdrekJOSlR2QzY5bTFqR1N4R3o1RmxRWTdXcWN5U3NWYWoyMjF1T3NFMUZBWUhnSXJBeQo2Rk1oS1piVTVGelhQclpwRUNlTjU0NmpKdUVITEgzS1NxS2F3R0lQbTk1UG1MczBQSEZBWnozQXdvcGtPak1NCmlmM2o1YnZ3WWlqVHUydk8xdkQ5cG9RMkRuWndkcmFkdlFYNEZKWXJrN05MYmpERDZjVFIxamN3bWFLUzBmQVgKYU5WYktBRlNoSDhRTE5ybkFwOUtpUWx2Y21pQmg4VXd0K2dFbjcvTHNRS0NBUUJLVWd6bmZldE03eTZJWFdQcApkVDJxWTlHUis1QjJoUGwzdkZieU5VczY1TXJaL25JckpHMFkyb3JnZUY5dE1KV0JJZzlIdFRzMy9rYko5Y0VvCnZsUUhiZUN0QXgrRk5PN1k2NnZnd1Ric2lzaDRWYTc5SjdiTFBoSFdqYVhqMUIyV0JYSHRlZWxGYWN6Y1ltTHYKR1BleHRXTHZVQ21qa1Ftcmt4ZGJuN2pKQlk1L0xobkpLUFdBbXZXUlBFd21lTWdDZFdIOUpXYnpHMDJoNTNzcQpJR3hxemRTYVFWb1NMWDJGZnhUYjFzS29HWVgyMi8yZ3Q4WWpnK204dEEwTG9EMG56ZmFmN2puVmxpWWk1RUZzCkt4YWtLbTBKOEo1eEdRM0s0aXR5RHFGaVBkdG54Q0hSVHRBZXovNGg4K1VTKyswUExFZmU2L3RZc25JZnJobjIKZ1BIUkFvSUJBUURYa2dhMWZMNUZ0dWY3VUNDT203aG1CL3pDZ0FQeXc4d3Y4bWdSc1poZkdGQXJ2cjRybEwvYQpUVDlwcEhYWFY4NE1EYTZoaGRZWk1JNEtENHFQQmlScHRVVHVQZTFVbmFVclptVXhUMU1ON2Z1SXhTZ3MyYWRTClRvb3EwUmxXZVlSSVFWZFNoNklxSEhCdVFpOWgzdHBtVUFNUk92NmRNUmJuYStMRWtKSGY4Rzh3ai9RU3hOcTkKUUFxOHNiR29teWZGTGdPSFVLOUVvbjRlOE1TZWFTVURTOHY3RkFLMVFSeUJ6UzRtTFZuNTFubXBuS09nUFVkcQpncVJPOGxzS0ZmQkROU1RqWkRCYWpGc1ZIYmRrbXNmdjRCdVNnZGhGQjY4aWFoU0h3Qit3cDZJTEtIdVJjMlpoCm56MmdWTFRFYUwzWU13ekJEY1U4VzZMM1hScFJXeTV4QW9JQkFDcFNhSDdKaHJsdWZPaCtmMUQwUmI3TDd1b1AKbmxZdzF5Uk9IdUFLaVpXNW5zL3FaNnUydWJjU3dnS20vcXh0eHlxb1FYQVhNeXlLK24raGJSUVRaOVl0OHVObQpvTUt1WWtWVzhOWmplTHZPbVpsdTlJMm53b0pCNFRkNTFDOHJrTDd5UkpNaC9DMFZjWmN6L1VKQmZkazIrdXZMCnpYQnN0Z1VzS2VScC9hWkVzcXFSRmNBdlpZWUZ1ZTVqM2cvSHN1NGVSeUpXT2tPQlNWWlRiR1JzeGpQNVBLMkkKeVIrU09FQVRYZlJSU29LbGtma3YwT1VKSDVRaXJhR3V6a1NjSHgxemJXYVVrQVZQb254ZVI2M2hJTFk1TWZHVApSeE9WU0doVWtyVHpHdU1hRzZCdlN2WEg3a2xSRnJTeG84bzBlSlIxM2dpSkNSMG1SVVdOMjl0THV6bz0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K' | base64 -d > /www/bak/ssl_cert/vscode.key
 
 # Certificate of the module https://github.com/milkfr/certs
-RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
-    && sed -i "s/zhejiang/Sichuan/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/hangzhou/ChengDu/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Organization Name (eg, company)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/milkfr/vscode/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/291509722@qq.com/vscode@localhost.com/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Email Address/vscode@localhost.com/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Common Name (e.g. server FQDN or YOUR name)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/vscode.github.io/vscode/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Organizational Unit Name (eg, section)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Locality Name (eg, city)/ChengDu/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/State or Province Name (full name)/Sichuan/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/Country Name (2 letter code)/CN/g" /www/bak/ssl_cert/openssl.cnf \
-    && sed -i "s/1/KzAYsECwt6gdLCzN7xEcnoaHXb4dtp/g" /www/bak/ssl_cert/openssl-gen.sh \
-    && sed -i "s:-out ca.pem:-out ca.pem -subj \"/C=CN/ST=Sichuan/L=ChengDu/O=vscode/OU=vscode/CN=vscode/emailAddress=vscode@localhost.com\":g" /www/bak/ssl_cert/openssl-gen.sh \
-    && sed -i "s: ca.: \${0/openssl-gen.sh}ca.:g" /www/bak/ssl_cert/openssl-gen.sh \
-    && sed -i "s:openssl.cnf:\${0/openssl-gen.sh}openssl.cnf:g" /www/bak/ssl_cert/openssl-gen.sh \
-    && sh /www/bak/ssl_cert/openssl-gen.sh \
-    && sed -i "s/milkfr/vscode/g" /www/bak/ssl_cert/main.go \
-    && sed -i "s/vscode.github.io/localhost/g" /www/bak/ssl_cert/main.go \
-    && cd /www/bak/ssl_cert \
-    && go run main.go -hostname localhost \
-    && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
-    && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key
+# RUN git clone https://github.com/milkfr/certs.git /www/bak/ssl_cert \
+#     && sed -i "s/zhejiang/Sichuan/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/hangzhou/ChengDu/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Organization Name (eg, company)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/milkfr/vscode/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/291509722@qq.com/vscode@localhost.com/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Email Address/vscode@localhost.com/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Common Name (e.g. server FQDN or YOUR name)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/vscode.github.io/vscode/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Organizational Unit Name (eg, section)/vscode/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Locality Name (eg, city)/ChengDu/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/State or Province Name (full name)/Sichuan/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/Country Name (2 letter code)/CN/g" /www/bak/ssl_cert/openssl.cnf \
+#     && sed -i "s/1/KzAYsECwt6gdLCzN7xEcnoaHXb4dtp/g" /www/bak/ssl_cert/openssl-gen.sh \
+#     && sed -i "s:-out ca.pem:-out ca.pem -subj \"/C=CN/ST=Sichuan/L=ChengDu/O=vscode/OU=vscode/CN=vscode/emailAddress=vscode@localhost.com\":g" /www/bak/ssl_cert/openssl-gen.sh \
+#     && sed -i "s: ca.: \${0/openssl-gen.sh}ca.:g" /www/bak/ssl_cert/openssl-gen.sh \
+#     && sed -i "s:openssl.cnf:\${0/openssl-gen.sh}openssl.cnf:g" /www/bak/ssl_cert/openssl-gen.sh \
+#     && sh /www/bak/ssl_cert/openssl-gen.sh \
+#     && sed -i "s/milkfr/vscode/g" /www/bak/ssl_cert/main.go \
+#     && sed -i "s/vscode.github.io/localhost/g" /www/bak/ssl_cert/main.go \
+#     && cd /www/bak/ssl_cert \
+#     && go run main.go -hostname localhost \
+#     && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
+#     && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key
 
-ENTRYPOINT ["/code-server.sh"]
 
 EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
 
