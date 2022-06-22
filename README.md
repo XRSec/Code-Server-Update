@@ -21,23 +21,23 @@ See [requirements](https://github.com/cdr/code-server/blob/v3.11.1/docs/requirem
 
 ![screenshot.png](https://cdn.jsdelivr.net/gh/cdr/code-server@master/docs/assets/screenshot.png)
 
-![image-20210414055205574](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025318419611.png)
+![image-20210414055205574](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025318419611.png?fmt=webp&q=48)
 
-![image-20210414055235174](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025328484604.png)
+![image-20210414055235174](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025328484604.png?fmt=webp&q=48)
 
-![image-20210414055414719](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025337591529.png)
+![image-20210414055414719](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025337591529.png?fmt=webp&q=48)
 
 Open the folder where you want XDebug
 
-![image-20210414055539161](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025400286705.png)
+![image-20210414055539161](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025400286705.png?fmt=webp&q=48)
 
-![image-20210414055812313](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025411261774.png)
+![image-20210414055812313](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025411261774.png?fmt=webp&q=48)
 
-![image-20210414061136419](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025430379273.png)
+![image-20210414061136419](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025430379273.png?fmt=webp&q=48)
 
-![image-20210414061302145](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025437679754.png)
+![image-20210414061302145](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025437679754.png?fmt=webp&q=48)
 
-![image-20210414061343415](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025447226680.png)
+![image-20210414061343415](https://rmt.ladydaily.com/fetch/ZYGG/storage/20210429025447226680.png?fmt=webp&q=48)
 
 ## Getting started
 
