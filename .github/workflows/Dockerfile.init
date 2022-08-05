@@ -92,7 +92,7 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
 #     && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
 #     && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key
 
-RUN yum -y install python2 python3.9 \
+RUN yum -y install python2 python3.9 golang screen \
     && yum clean all
 
 EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
