@@ -91,7 +91,28 @@ RUN echo "export vscode=\"/www/env\"" >> /etc/profile \
 #     && go run main.go -hostname localhost \
 #     && mv /www/bak/ssl_cert/ca.crt /www/bak/ssl_cert/vscode.crt \
 #     && mv /www/bak/ssl_cert/ca.key /www/bak/ssl_cert/vscode.key
-
+RUN yum -y install zlib-devel \
+        bzip2-devel \
+        openssl-devel \
+        ncurses-devel \
+        sqlite-devel \
+        readline-devel \
+        tk-devel \
+        gdbm-devel \
+        db4-devel \
+        libpcap-devel \
+        xz-devel \
+    && wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz \
+    && mkdir /www/server/python3 \
+    && tar -zxvf Python-3.9.0.tar \
+    && cd Python-3.9.0 \
+    && ./configure --prefix=/www/server/python3 \
+    && make \
+    && make install \
+    && ln -s /www/server/python3/bin/python3 /usr/bin/python3 \
+    && ln -s /www/server/python3/bin/pip3 /usr/bin/pip3 \
+    && cd .. \
+    && rm -rf Python-3.9.0.tgz Python-3.9.0
 
 EXPOSE 22 5050 5051 8765 31000 31001 31002 31003
 

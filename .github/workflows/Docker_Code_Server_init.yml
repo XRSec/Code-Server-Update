@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [Php_Update_Action]
-  watch:
-    types: started
+  # watch:
+  #   types: started
 
 jobs:
   Build_For_Code_Server_Init:
