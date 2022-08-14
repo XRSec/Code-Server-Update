@@ -80,7 +80,7 @@ docker run -it -d \
 # $ pkill php && php74 && nginx
 ```
 
-You can also take a [look at this article see](https://blog.zygd.site/Online%20Config%20VS%20Code.html)
+You can also take a [look at this article see](https://xrsec.vercel.app/Online%20Config%20VS%20Code.html)
 
 ## About
 

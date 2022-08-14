@@ -1,6 +1,6 @@
 FROM xrsec/code-server:init
 LABEL maintainer="xrsec"
-LABEL mail="troy@zygd.site"
+LABEL mail="Jalapeno1868@outlook.com"
 LABEL Github="https://github.com/XRSec/Code-Server-Update"
 LABEL org.opencontainers.image.source="https://github.com/XRSec/Code-Server-Update"
 LABEL org.opencontainers.image.title="Code-Server-Update"
